@@ -115,7 +115,7 @@ Deletes a customer record by ID.
 1. **Clone the repository:**
    ```bash
    git clone <repository-url>
-   cd customer-management-api
+   cd cust-mgmnt-apis
    ```
 
 2. **Build and run with Maven:**
