@@ -39,6 +39,8 @@ Each customer has the following fields:
 
 ### Customer Management
 
+**Base Path**: http://localhost:8080/v1/api
+
 #### Create Customer
 ```
 POST /customers
