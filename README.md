@@ -120,12 +120,6 @@ Deletes a customer record by ID.
    ```bash
    ./mvnw spring-boot:run
    ```
-
-   Or with Gradle:
-   ```bash
-   ./gradlew bootRun
-   ```
-
 3. **Access the application:**
    - API Base URL: `http://localhost:8080`
    - Swagger UI: `http://localhost:8080/swagger-ui.html`
@@ -138,17 +132,6 @@ For local development, the application uses H2 in-memory database:
 - **URL**: `jdbc:h2:mem:testdb`
 - **Username**: `sa`
 - **Password**: `password`
-
-### Sample Data
-
-The application automatically loads sample customer data on startup for testing purposes:
-
-1. **Alice Johnson** (Silver) - $800 annual spend, recent purchase
-2. **Bob Smith** (Gold) - $2,500 annual spend, purchased 8 months ago
-3. **Carol Williams** (Platinum) - $15,000 annual spend, purchased 3 months ago
-4. **David Brown** (Silver) - $12,000 annual spend, but no purchase in 18 months
-5. **Eva Davis** (Silver) - $3,000 annual spend, but no purchase in 15 months
-6. **Frank Miller** (Silver) - $5,000 annual spend, but no purchase history
 
 ## Testing
 
@@ -223,84 +206,4 @@ spring.jpa.show-sql=true
 # OpenAPI Configuration
 springdoc.swagger-ui.path=/swagger-ui.html
 ```
-
-## Architecture
-
-### Project Structure
-
-```
-src/
-├── main/
-│   ├── java/
-│   │   └── com/tillster/customermanagement/
-│   │       ├── config/          # Configuration classes
-│   │       ├── controller/      # REST controllers
-│   │       ├── dto/            # Data Transfer Objects
-│   │       ├── exception/      # Exception handling
-│   │       ├── mapper/         # Entity-DTO mappers
-│   │       ├── model/          # JPA entities
-│   │       ├── repository/     # Data repositories
-│   │       └── service/        # Business logic
-│   └── resources/
-│       └── application.properties
-└── test/
-    └── java/                   # Test classes
-```
-
-### Technology Stack
-
-- **Spring Boot 3.2.0**: Application framework
-- **Spring Data JPA**: Data persistence
-- **H2 Database**: In-memory database
-- **Spring Validation**: Input validation
-- **SpringDoc OpenAPI**: API documentation
-- **JUnit 5**: Testing framework
-- **Mockito**: Mocking framework
-- **Maven**: Build tool
-
-## Error Handling
-
-The API provides consistent error responses:
-
-### Validation Errors (400 Bad Request)
-```json
-{
-  "error": "VALIDATION_FAILED",
-  "message": "Request validation failed",
-  "validationErrors": {
-    "email": "Email should be valid",
-    "name": "Name is required"
-  },
-  "timestamp": "2024-10-01T10:30:00"
-}
-```
-
-### Not Found Errors (404 Not Found)
-```json
-{
-  "error": "CUSTOMER_NOT_FOUND",
-  "message": "Customer not found with id: 123e4567-e89b-12d3-a456-426614174000",
-  "timestamp": "2024-10-01T10:30:00"
-}
-```
-
-### Conflict Errors (409 Conflict)
-```json
-{
-  "error": "DUPLICATE_EMAIL",
-  "message": "Customer with email john.doe@example.com already exists",
-  "timestamp": "2024-10-01T10:30:00"
-}
-```
-
-## Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add some amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+r details.
